@@ -37,7 +37,7 @@ test('does not log if ROARR_LOG=false', (t) => {
 });
 
 test('logs if ROARR_LOG=true', (t) => {
-  const trace = sinon.stub();
+  const trace = stub();
 
   const write = createLogWriter({
     logMethods: {
@@ -64,7 +64,7 @@ test('logs if ROARR_LOG=true', (t) => {
 });
 
 test('does not log if filter does not match', (t) => {
-  const trace = sinon.stub();
+  const trace = stub();
 
   const write = createLogWriter({
     logMethods: {
