@@ -1,0 +1,67 @@
+{
+  "author": {
+    "email": "gajus@gajus.com",
+    "name": "Gajus Kuizinas",
+    "url": "http://gajus.com"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "files": [
+      "test/roarr/**/*"
+    ],
+    "require": [
+      "ts-node/register/transpile-only"
+    ]
+  },
+  "dependencies": {
+    "boolean": "^3.1.4",
+    "liqe": "^1.2.1"
+  },
+  "description": "Roarr log writer for use in a web browser.",
+  "devDependencies": {
+    "@istanbuljs/nyc-config-typescript": "^1.0.1",
+    "@types/globalthis": "^1.0.1",
+    "@types/json-stringify-safe": "^5.0.0",
+    "@types/node": "^16.11.6",
+    "@types/semver-compare": "^1.0.1",
+    "@types/sinon": "^10.0.6",
+    "ava": "^3.15.0",
+    "coveralls": "^3.1.1",
+    "del-cli": "^4.0.1",
+    "eslint": "^7.32.0",
+    "eslint-config-canonical": "^28.0.0",
+    "husky": "^7.0.4",
+    "nyc": "^15.1.0",
+    "roarr": "^7.4.0",
+    "semantic-release": "^18.0.0",
+    "sinon": "^12.0.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  },
+  "engines": {
+    "node": ">=12.0"
+  },
+  "keywords": [
+    "roarr",
+    "browser",
+    "log",
+    "writer"
+  ],
+  "license": "BSD-3-Clause",
+  "main": "./dist/src/index.js",
+  "name": "@roarr/browser-log-writer",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:gajus/roarr-browser-log-writer.git"
+  },
+  "scripts": {
+    "build": "del-cli ./dist && tsc",
+    "dev": "tsc --watch",
+    "lint": "eslint ./src ./test && tsc --noEmit",
+    "test": "NODE_ENV=test ava --serial --verbose"
+  },
+  "typings": "./dist/src/index.d.ts",
+  "version": "1.0.0"
+}
