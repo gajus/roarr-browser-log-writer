@@ -1,6 +1,6 @@
 # Roarr Browser Log Writer
 
-[![Travis build status](http://img.shields.io/travis/gajus/browser-log-writer/master.svg?style=flat-square)](https://app.travis-ci.com/github/gajus/roarr-browser-log-writer)
+[![Travis build status](https://img.shields.io/travis/gajus/roarr-browser-log-writer/main.svg?style=flat-square)](https://app.travis-ci.com/github/gajus/roarr-browser-log-writer)
 [![Coveralls](https://img.shields.io/coveralls/gajus/roarr-browser-log-writer.svg?style=flat-square)](https://coveralls.io/github/gajus/roarr-browser-log-writer)
 [![NPM version](http://img.shields.io/npm/v/@roarr/browser-log-writer.svg?style=flat-square)](https://www.npmjs.com/package/@roarr/browser-log-writer)
 [![Canonical Code Style](https://img.shields.io/badge/code%20style-canonical-blue.svg?style=flat-square)](https://github.com/gajus/canonical)
