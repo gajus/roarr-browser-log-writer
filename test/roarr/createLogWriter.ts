@@ -1,11 +1,11 @@
 import test from 'ava';
 import sinon from 'sinon';
 import {
-  createLogWriter,
-} from '../../src/factories/createLogWriter';
-import {
   createLogMethods,
 } from '../../src/factories/createLogMethods';
+import {
+  createLogWriter,
+} from '../../src/factories/createLogWriter';
 
 test('does not log if ROARR_LOG=false', (t) => {
   const trace = sinon.stub();
@@ -26,7 +26,7 @@ test('does not log if ROARR_LOG=false', (t) => {
       setItem: () => {
         // Do nothing.
       },
-    }
+    },
   });
 
   write('{"context":{"logLevel":0},"message":"foo"}');
@@ -53,7 +53,7 @@ test('logs if ROARR_LOG=true', (t) => {
       setItem: () => {
         // Do nothing.
       },
-    }
+    },
   });
 
   write('{"context":{"logLevel":0},"message":"foo"}');
@@ -80,7 +80,7 @@ test('does not log if filter does not match', (t) => {
       setItem: () => {
         // Do nothing.
       },
-    }
+    },
   });
 
   write('{"context":{"logLevel":0},"message":"foo"}');

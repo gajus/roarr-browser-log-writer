@@ -9,4 +9,4 @@ export type LogMethods = { [key in LogLevelName]: (...data: unknown[]) => void }
 export type Storage = {
   getItem: (name: string) => string | null,
   setItem: (name: string, value: string) => void,
-}
+};
