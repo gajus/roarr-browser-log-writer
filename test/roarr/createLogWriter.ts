@@ -1,5 +1,7 @@
 import test from 'ava';
-import sinon from 'sinon';
+import {
+  stub,
+} from 'sinon';
 import {
   createLogMethods,
 } from '../../src/factories/createLogMethods';
@@ -8,7 +10,7 @@ import {
 } from '../../src/factories/createLogWriter';
 
 test('does not log if ROARR_LOG=false', (t) => {
-  const trace = sinon.stub();
+  const trace = stub();
 
   const write = createLogWriter({
     logMethods: {
