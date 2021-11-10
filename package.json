@@ -18,7 +18,7 @@
   "dependencies": {
     "boolean": "^3.1.4",
     "globalthis": "^1.0.2",
-    "liqe": "^1.4.4"
+    "liqe": "^1.10.0"
   },
   "description": "Roarr log writer for use in a web browser.",
   "devDependencies": {
@@ -35,7 +35,7 @@
     "eslint-config-canonical": "^28.0.0",
     "husky": "^7.0.4",
     "nyc": "^15.1.0",
-    "roarr": "^7.4.0",
+    "roarr": "^7.5.0",
     "semantic-release": "^18.0.0",
     "sinon": "^12.0.1",
     "ts-node": "^10.4.0",

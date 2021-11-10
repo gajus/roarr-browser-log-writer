@@ -1,6 +1,7 @@
 import {
   boolean,
 } from 'boolean';
+import createGlobalThis from 'globalthis';
 import {
   parse,
   test,
@@ -20,6 +21,8 @@ import type {
 import {
   createLogMethods,
 } from './createLogMethods';
+
+const globalThis = createGlobalThis();
 
 type Configuration = {
   logMethods?: LogMethods,
@@ -84,6 +87,15 @@ export const createLogWriter = (configuration: Configuration = {}): LogWriter =>
   const storage = configuration?.storage ?? globalThis.localStorage;
   const logMethods = configuration?.logMethods ?? createLogMethods();
 
+  if (!storage && !globalThis.localStorage) {
+    // eslint-disable-next-line no-console
+    console.warn('initiated Roarr browser log writer in non-browser context');
+
+    return () => {
+      // Do nothing.
+    };
+  }
+
   if (!boolean(storage.getItem('ROARR_LOG'))) {
     return () => {
       // Do nothing.
@@ -105,7 +117,7 @@ export const createLogWriter = (configuration: Configuration = {}): LogWriter =>
       return;
     }
 
-    const logLevelName = getLogLevelName(numericLogLevel);
+    const logLevelName = getLogLevelName(Number(numericLogLevel));
     const logMethod = logMethods[logLevelName];
 
     const logColor = logLevelColors[logLevelName];
