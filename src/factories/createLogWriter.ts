@@ -135,7 +135,7 @@ export const createLogWriter = (configuration: Configuration = {}): LogWriter =>
 
     if (Object.keys(context).length > 0) {
       logMethod(
-        `%c ${logLevelName} %c${namespace ? ` [${namespace}]:` : ''
+        `%c ${logLevelName} %c${namespace ? ` [${String(namespace)}]:` : ''
         }%c ${payload.message} %O`,
         styles,
         namespaceStyles,
@@ -144,7 +144,7 @@ export const createLogWriter = (configuration: Configuration = {}): LogWriter =>
       );
     } else {
       logMethod(
-        `%c ${logLevelName} %c${namespace ? ` [${namespace}]:` : ''
+        `%c ${logLevelName} %c${namespace ? ` [${String(namespace)}]:` : ''
         }%c ${payload.message}`,
         styles,
         namespaceStyles,
