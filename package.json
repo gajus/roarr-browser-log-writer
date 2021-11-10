@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "boolean": "^3.1.4",
+    "globalthis": "^1.0.2",
     "liqe": "^1.4.4"
   },
   "description": "Roarr log writer for use in a web browser.",
