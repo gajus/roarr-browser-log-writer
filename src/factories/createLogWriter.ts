@@ -9,8 +9,11 @@ import {
 import type {
   Query,
 } from 'liqe';
+import {
+  getLogLevelName,
+} from 'roarr';
 import type {
-  logLevels,
+  LogLevelName,
   LogWriter,
   Message,
 } from 'roarr';
@@ -28,8 +31,6 @@ type Configuration = {
   logMethods?: LogMethods,
   storage?: Storage,
 };
-
-type LogLevelName = keyof typeof logLevels;
 
 const logLevelColors: {
   [key in LogLevelName]: { backgroundColor: string, color: string, };
@@ -57,30 +58,6 @@ const findLiqeQuery = (storage: Storage): Query | null => {
   const query = storage.getItem('ROARR_FILTER');
 
   return query ? parse(query) : null;
-};
-
-const getLogLevelName = (numericLogLevel: number): LogLevelName => {
-  if (numericLogLevel <= 10) {
-    return 'trace';
-  }
-
-  if (numericLogLevel <= 20) {
-    return 'debug';
-  }
-
-  if (numericLogLevel <= 30) {
-    return 'info';
-  }
-
-  if (numericLogLevel <= 40) {
-    return 'warn';
-  }
-
-  if (numericLogLevel <= 50) {
-    return 'error';
-  }
-
-  return 'fatal';
 };
 
 export const createLogWriter = (configuration: Configuration = {}): LogWriter => {
