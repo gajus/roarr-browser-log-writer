@@ -11,9 +11,8 @@ node_modules
 !.gitignore
 !.husky
 !.ncurc.js
-!.npmrc
 !.npmignore
+!.npmrc
 !.nycrc
 !.README
-!.travis.yml
-/package-lock.json
+!.releaserc
