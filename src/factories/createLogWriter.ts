@@ -7,7 +7,7 @@ import {
   test,
 } from 'liqe';
 import type {
-  Query,
+  LiqeQuery,
 } from 'liqe';
 import {
   getLogLevelName,
@@ -84,7 +84,7 @@ const namespaceColors: {
   },
 };
 
-const findLiqeQuery = (storage: Storage): Query | null => {
+const findLiqeQuery = (storage: Storage): LiqeQuery | null => {
   const query = storage.getItem('ROARR_FILTER');
 
   return query ? parse(query) : null;
