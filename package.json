@@ -15,6 +15,9 @@
       "ts-node/register/transpile-only"
     ]
   },
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "boolean": "^3.1.4",
     "globalthis": "^1.0.2",
