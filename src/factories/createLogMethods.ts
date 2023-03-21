@@ -1,8 +1,6 @@
 /* eslint-disable no-console */
 
-import type {
-  LogMethods,
-} from '../types';
+import { type LogMethods } from '../types';
 
 export const createLogMethods = (): LogMethods => {
   return {

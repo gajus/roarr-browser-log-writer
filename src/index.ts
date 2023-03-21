@@ -1,3 +1,1 @@
-export {
-  createLogWriter,
-} from './factories/createLogWriter';
+export { createLogWriter } from './factories/createLogWriter';

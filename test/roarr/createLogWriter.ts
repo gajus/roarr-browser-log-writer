@@ -1,13 +1,7 @@
+import { createLogMethods } from '../../src/factories/createLogMethods';
+import { createLogWriter } from '../../src/factories/createLogWriter';
 import test from 'ava';
-import {
-  stub,
-} from 'sinon';
-import {
-  createLogMethods,
-} from '../../src/factories/createLogMethods';
-import {
-  createLogWriter,
-} from '../../src/factories/createLogWriter';
+import { stub } from 'sinon';
 
 test('does not log if ROARR_LOG=false', (t) => {
   const trace = stub();

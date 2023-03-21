@@ -1,12 +1,8 @@
 {
+  "ignorePatterns": ["dist", "package-lock.json"],
   "extends": [
-    "canonical",
-    "canonical/node",
-    "canonical/typescript"
+    "canonical/auto"
   ],
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
   "root": true,
   "rules": {
     "@typescript-eslint/no-explicit-any": 0,

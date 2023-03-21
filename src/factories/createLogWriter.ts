@@ -1,39 +1,21 @@
-import {
-  boolean,
-} from 'boolean';
+import { type LogMethods, type Storage } from '../types';
+import { createLogMethods } from './createLogMethods';
+import { boolean } from 'boolean';
 import createGlobalThis from 'globalthis';
-import {
-  parse,
-  test,
-} from 'liqe';
-import type {
-  LiqeQuery,
-} from 'liqe';
-import {
-  getLogLevelName,
-} from 'roarr';
-import type {
-  LogLevelName,
-  LogWriter,
-  Message,
-} from 'roarr';
-import type {
-  Storage,
-  LogMethods,
-} from '../types';
-import {
-  createLogMethods,
-} from './createLogMethods';
+import { type LiqeQuery } from 'liqe';
+import { parse, test } from 'liqe';
+import { type LogLevelName, type LogWriter, type Message } from 'roarr';
+import { getLogLevelName } from 'roarr';
 
 const globalThis = createGlobalThis();
 
 type Configuration = {
-  logMethods?: LogMethods,
-  storage?: Storage,
+  logMethods?: LogMethods;
+  storage?: Storage;
 };
 
 const logLevelColors: {
-  [key in LogLevelName]: { backgroundColor: string, color: string, };
+  [key in LogLevelName]: { backgroundColor: string; color: string };
 } = {
   debug: {
     backgroundColor: '#712bde',
@@ -62,7 +44,7 @@ const logLevelColors: {
 };
 
 const namespaceColors: {
-  [key in LogLevelName]: { color: string, };
+  [key in LogLevelName]: { color: string };
 } = {
   debug: {
     color: '#8367d3',
@@ -90,7 +72,9 @@ const findLiqeQuery = (storage: Storage): LiqeQuery | null => {
   return query ? parse(query) : null;
 };
 
-export const createLogWriter = (configuration: Configuration = {}): LogWriter => {
+export const createLogWriter = (
+  configuration: Configuration = {},
+): LogWriter => {
   const storage = configuration?.storage ?? globalThis.localStorage;
   const logMethods = configuration?.logMethods ?? createLogMethods();
 
@@ -142,7 +126,8 @@ export const createLogWriter = (configuration: Configuration = {}): LogWriter =>
 
     if (Object.keys(context).length > 0) {
       logMethod(
-        `%c ${logLevelName} %c${namespace ? ` [${String(namespace)}]:` : ''
+        `%c ${logLevelName} %c${
+          namespace ? ` [${String(namespace)}]:` : ''
         }%c ${payload.message} %O`,
         styles,
         namespaceStyles,
@@ -151,7 +136,8 @@ export const createLogWriter = (configuration: Configuration = {}): LogWriter =>
       );
     } else {
       logMethod(
-        `%c ${logLevelName} %c${namespace ? ` [${String(namespace)}]:` : ''
+        `%c ${logLevelName} %c${
+          namespace ? ` [${String(namespace)}]:` : ''
         }%c ${payload.message}`,
         styles,
         namespaceStyles,
