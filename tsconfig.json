@@ -1,24 +1,19 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "moduleResolution": "node",
+    "noEmit": true,
     "noImplicitAny": false,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "outDir": "dist",
     "skipLibCheck": true,
     "strict": true,
     "target": "es5"
   },
-  "exclude": [
-    "dist",
-    "node_modules"
-  ],
   "include": [
     "src",
     "test"

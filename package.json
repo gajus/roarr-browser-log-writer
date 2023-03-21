@@ -57,18 +57,18 @@
     "writer"
   ],
   "license": "BSD-3-Clause",
-  "main": "./dist/src/index.js",
+  "main": "./dist/index.js",
   "name": "@roarr/browser-log-writer",
   "repository": {
     "type": "git",
     "url": "git@github.com:gajus/roarr-browser-log-writer.git"
   },
   "scripts": {
-    "build": "del-cli ./dist && tsc",
-    "dev": "tsc --watch",
-    "lint": "eslint ./src ./test && tsc --noEmit",
+    "build": "del-cli ./dist && tsc --project tsconfig.build.json",
+    "dev": "tsc --watch --project tsconfig.build.json",
+    "lint": "eslint . && tsc",
     "test": "NODE_ENV=test ava --serial --verbose"
   },
-  "typings": "./dist/src/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "version": "1.0.0"
 }
