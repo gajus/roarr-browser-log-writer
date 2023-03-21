@@ -1,5 +1,5 @@
 {
-  "ignorePatterns": ["dist", "package-lock.json"],
+  "ignorePatterns": ["dist", "package-lock.json", "init.js", "init.ts"],
   "extends": [
     "canonical/auto"
   ],
