@@ -53,6 +53,6 @@ The value of `ROARR_FILTER` is a [Liqe query](https://github.com/gajus/liqe), e.
 # Only print logs with `context.logLevel` greater than 10.
 localStorage.setItem('ROARR_FILTER', 'context.logLevel:>10')
 
-# Only print logs with `context.namepsace` containing "slonik".
+# Only print logs with `context.namespace` containing "slonik".
 localStorage.setItem('ROARR_FILTER', 'context.namespace:slonik')
 ```

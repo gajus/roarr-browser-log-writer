@@ -33,6 +33,7 @@
     "@types/sinon": "^10.0.6",
     "ava": "^3.15.0",
     "coveralls": "^3.1.1",
+    "cspell": "^6.30.2",
     "del-cli": "^4.0.1",
     "eslint": "^8.36.0",
     "eslint-config-canonical": "^41.0.1",
@@ -66,7 +67,7 @@
   "scripts": {
     "build": "del-cli ./dist && tsc --project tsconfig.build.json",
     "dev": "tsc --watch --project tsconfig.build.json",
-    "lint": "eslint . && tsc",
+    "lint": "eslint . && tsc && cspell .",
     "test": "NODE_ENV=test ava --serial --verbose"
   },
   "typings": "./dist/index.d.ts",
