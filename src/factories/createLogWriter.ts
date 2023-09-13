@@ -12,6 +12,7 @@ const globalThis = createGlobalThis();
 type Configuration = {
   logMethods?: LogMethods;
   storage?: Storage;
+  styleOutput?: boolean;
 };
 
 const logLevelColors: {
@@ -75,6 +76,8 @@ const findLiqeQuery = (storage: Storage): LiqeQuery | null => {
 export const createLogWriter = (
   configuration: Configuration = {},
 ): LogWriter => {
+  const styleOutput = configuration?.styleOutput ?? true;
+
   const storage = configuration?.storage ?? globalThis.localStorage;
   const logMethods = configuration?.logMethods ?? createLogMethods();
 
@@ -95,6 +98,62 @@ export const createLogWriter = (
 
   const liqeQuery = findLiqeQuery(storage);
 
+  if (styleOutput) {
+    return (message) => {
+      const payload = JSON.parse(message) as Message;
+
+      const {
+        logLevel: numericLogLevel,
+        namespace,
+        ...context
+      } = payload.context;
+
+      if (liqeQuery && !test(liqeQuery, payload)) {
+        return;
+      }
+
+      const logLevelName = getLogLevelName(Number(numericLogLevel));
+      const logMethod = logMethods[logLevelName];
+
+      const logColor = logLevelColors[logLevelName];
+
+      const styles = `
+        background-color: ${logColor.backgroundColor};
+        color: ${logColor.color};
+        font-weight: bold;
+      `;
+
+      const namespaceStyles = `
+        color: ${namespaceColors[logLevelName].color};
+      `;
+
+      const resetStyles = `
+        color: inherit;
+      `;
+
+      if (Object.keys(context).length > 0) {
+        logMethod(
+          `%c ${logLevelName} %c${
+            namespace ? ` [${String(namespace)}]:` : ''
+          }%c ${payload.message} %O`,
+          styles,
+          namespaceStyles,
+          resetStyles,
+          context,
+        );
+      } else {
+        logMethod(
+          `%c ${logLevelName} %c${
+            namespace ? ` [${String(namespace)}]:` : ''
+          }%c ${payload.message}`,
+          styles,
+          namespaceStyles,
+          resetStyles,
+        );
+      }
+    };
+  }
+
   return (message) => {
     const payload = JSON.parse(message) as Message;
 
@@ -111,37 +170,18 @@ export const createLogWriter = (
     const logLevelName = getLogLevelName(Number(numericLogLevel));
     const logMethod = logMethods[logLevelName];
 
-    const logColor = logLevelColors[logLevelName];
-    const styles = `
-      background-color: ${logColor.backgroundColor};
-      color: ${logColor.color};
-      font-weight: bold;
-    `;
-    const namespaceStyles = `
-      color: ${namespaceColors[logLevelName].color};
-    `;
-    const resetStyles = `
-      color: inherit;
-    `;
-
     if (Object.keys(context).length > 0) {
       logMethod(
-        `%c ${logLevelName} %c${
-          namespace ? ` [${String(namespace)}]:` : ''
-        }%c ${payload.message} %O`,
-        styles,
-        namespaceStyles,
-        resetStyles,
+        `${logLevelName} ${namespace ? ` [${String(namespace)}]:` : ''} ${
+          payload.message
+        } %O`,
         context,
       );
     } else {
       logMethod(
-        `%c ${logLevelName} %c${
-          namespace ? ` [${String(namespace)}]:` : ''
-        }%c ${payload.message}`,
-        styles,
-        namespaceStyles,
-        resetStyles,
+        `${logLevelName} ${namespace ? ` [${String(namespace)}]:` : ''} ${
+          payload.message
+        }`,
       );
     }
   };
