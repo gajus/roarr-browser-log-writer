@@ -174,7 +174,7 @@ export const createLogWriter = (
       logMethod(
         `${logLevelName} ${namespace ? ` [${String(namespace)}]:` : ''} ${
           payload.message
-        } %O`,
+        }`,
         context,
       );
     } else {
